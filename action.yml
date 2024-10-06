@@ -1,0 +1,23 @@
+name: 'Build HTML index'
+description: 'Build and publish HTML index file'
+inputs:
+
+  pattern:
+    description: 'The pattern of files to include in the index.'
+    default: '**/*'
+    required: 'true'
+
+  working-directory:
+    description: 'The working directory to operate within.'
+    default: '.'
+
+runs:
+
+  using: "composite"
+  steps:
+
+    - name: Build index of the target branch
+      shell: bash
+      run: |
+        cd "${{ inputs.working-directory }}"
+        python "${{ github.action_path }}/build_index.py" --glob "${{ inputs.pattern }}"

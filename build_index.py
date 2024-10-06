@@ -6,7 +6,7 @@ import os
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--glob', type='str', default='**/*')
+parser.add_argument('--glob', type=str, default='**/*')
 args = parser.parse_args()
 
 
